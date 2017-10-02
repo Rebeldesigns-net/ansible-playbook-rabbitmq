@@ -1,8 +1,13 @@
 ---
 
 # RabbitMQ official install
+- name: "retrieve the official rabbitmq repository's key"
+  get_url:
+    url: http://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+    dest: /tmp/rabbitmq-release-signing-key.asc
+
 - name: "add the official rabbitmq repository's key"
-  apt_key: url=http://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+  apt_key: file=/tmp/rabbitmq-release-signing-key.asc
   when: not rabbitmq_os_package
 
 - name: add the official rabbitmq repository
