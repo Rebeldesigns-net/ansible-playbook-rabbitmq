@@ -40,4 +40,4 @@
     user=guest
     vhost=/
     state=absent
-  when: rm_guest_hostname|failed
+  when: rm_guest_hostname is failed
