@@ -113,6 +113,7 @@ RABBITMQ_ROCKS="correct"
 |----|----|-----------|-------|
 `rabbitmq_vhost_definitions`|List|Define the list of vhost to create|`[]`
 `rabbitmq_users_definitions`|List of hash|Define the users, and associated vhost and password (see below)|`[]`
+`rabbitmq_vhost_force_recreate`|Boolean|Define if vhost should be deleted if exists before creation|`"false"`
 
 Defining the vhosts configuration
 
