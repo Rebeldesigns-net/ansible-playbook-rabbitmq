@@ -3,6 +3,14 @@
 - name: ensure rabbitmq is runned
   service: name=rabbitmq-server state=started
 
+- name: delete rabbitmq vhost
+  rabbitmq_vhost: >
+    name="{{ item.name }}"
+    node="{{ item.node | default('rabbit') }}"
+    state=absent
+  with_items: "{{ rabbitmq_vhost_definitions }}"
+  when: "rabbitmq_vhost_force_recreate | default('no') | bool"
+
 - name: add rabbitmq vhost
   rabbitmq_vhost: >
     name="{{ item.name }}"
